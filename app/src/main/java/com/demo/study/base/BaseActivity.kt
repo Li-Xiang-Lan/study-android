@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -16,10 +15,11 @@ import android.widget.Toast
 import com.demo.study.R
 import com.demo.study.interfaces.ISureDialogListener
 import com.demo.study.retrofit.observer.progress.RxDialog
+import com.demo.study.ui.ac.mine.login.LoginActivity
+import com.demo.study.util.SPUtil
 import com.gyf.immersionbar.ImmersionBar
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.base_title_layout.*
-
 import org.greenrobot.eventbus.EventBus
 import retrofit2.HttpException
 import java.net.ConnectException
@@ -36,7 +36,7 @@ abstract class BaseActivity : AppCompatActivity(){
         requestedOrientation= ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         if (isImmersionBarEnabled()) {
             mImmersionBar= ImmersionBar.with(this)
-            mImmersionBar?.titleBar(base_title_layout)?.statusBarColor(R.color.colorfa)?.statusBarDarkFont(true, 0.2f)?.navigationBarEnable(false)?.init()
+            mImmersionBar?.titleBar(base_title_layout)?.statusBarColor(R.color.colore75)?.navigationBarEnable(false)?.init()
         }
 
         if (setTitleId()==0) ShowOrHideTitle(false)
@@ -166,22 +166,22 @@ abstract class BaseActivity : AppCompatActivity(){
         create.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.color333))
     }
 
-//    protected fun loginOrNot():Boolean{
-//        //未登录
-//        if (null== SPUtil?.getInstance()?.getUserInfo()){
-//            return false
-//        }
-//        return true
-//    }
-//    protected fun loginOrNot(s:String):Boolean{
-//        if (loginOrNot()){
-//            return true
-//        }else{
-//            t(s)
-//            startActivity(Intent(this, LoginActivity::class.java))
-//            return false
-//        }
-//    }
+    protected fun loginOrNot():Boolean{
+        //未登录
+        if (null== SPUtil.getInstance()?.getUserInfo()){
+            return false
+        }
+        return true
+    }
+    protected fun loginOrNot(s:String):Boolean{
+        if (loginOrNot()){
+            return true
+        }else{
+            t(s)
+            startActivity(Intent(this, LoginActivity::class.java))
+            return false
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()

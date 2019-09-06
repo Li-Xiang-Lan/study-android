@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.demo.study.R
 import com.demo.study.interfaces.ISureDialogListener
+import com.demo.study.ui.ac.mine.login.LoginActivity
+import com.demo.study.util.SPUtil
 import kotlinx.android.synthetic.main.activity_base.*
 import org.greenrobot.eventbus.EventBus
 import retrofit2.HttpException
@@ -34,7 +36,6 @@ abstract class BaseFragment : Fragment(){
         base_content_layout.addView(layoutInflater.inflate(contentLayoutId(),null))
         if (initEventBus()&&!EventBus.getDefault().isRegistered(this)) EventBus.getDefault().register(this)
         initView()
-        getNetworkData()
         setListener()
     }
 
@@ -42,28 +43,26 @@ abstract class BaseFragment : Fragment(){
 
     protected open fun initView(){}
 
-    protected open fun getNetworkData(){}
-
     protected open fun setListener(){}
 
     protected open fun initEventBus()=false
 
-//    protected fun loginOrNot():Boolean{
-//        //未登录
-//        if (null==SPUtil?.getInstance()?.getUserInfo()){
-//            return false
-//        }
-//        return true
-//    }
-//    protected fun loginOrNot(s:String):Boolean{
-//        if (loginOrNot()){
-//            return true
-//        }else{
-//            t(s)
-//            startActivity(Intent(context,LoginActivity::class.java))
-//            return false
-//        }
-//    }
+    protected fun loginOrNot():Boolean{
+        //未登录
+        if (null== SPUtil?.getInstance()?.getUserInfo()){
+            return false
+        }
+        return true
+    }
+    protected fun loginOrNot(s:String):Boolean{
+        if (loginOrNot()){
+            return true
+        }else{
+            t(s)
+            startActivity(Intent(context, LoginActivity::class.java))
+            return false
+        }
+    }
 
     protected fun showErrorMsg(e:Throwable){
         if (e is Error){

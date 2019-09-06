@@ -1,6 +1,8 @@
 package com.demo.study.base.basemvp
 
 import com.demo.study.retrofit.observer.CommonObserver
+import okhttp3.RequestBody
+import org.json.JSONObject
 
 
 /**
@@ -25,4 +27,7 @@ abstract class BasePresenter<T> : BaseContract.BasePresenter{
     protected fun addObserver(c: CommonObserver<*>){
         list.add(c)
     }
+
+    protected fun getRequestBody(s: JSONObject): RequestBody =
+        RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), s.toString());
 }

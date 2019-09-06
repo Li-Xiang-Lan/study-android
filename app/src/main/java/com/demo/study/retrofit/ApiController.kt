@@ -2,6 +2,10 @@ package com.demo.study.retrofit
 
 import android.content.Intent
 import com.demo.study.MyApp
+import com.demo.study.bean.EventBusBean
+import com.demo.study.ui.ac.mine.login.LoginActivity
+import com.demo.study.util.CodeUtil
+import com.demo.study.util.SPUtil
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
@@ -58,12 +62,12 @@ object ApiController{
             when(status){
             //登录失败
                 100->{
-//                    SPUtil.getInstance()?.clearUserInfo()
-//                    EventBus.getDefault().post(EventBusBean(CodeUtil.LOGOUT_SUCCESS))
-//                    val intent = Intent(MyApp.context, LoginActivity::class.java)
-//                    intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK
-//                    MyApp.context?.startActivity(intent)
-//                    it.onError(Error(errorMessage+"(603)"))
+                    SPUtil.getInstance()?.clearUserInfo()
+                    EventBus.getDefault().post(EventBusBean(CodeUtil.LOGOUT_SUCCESS))
+                    val intent = Intent(MyApp.context, LoginActivity::class.java)
+                    intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK
+                    MyApp.context?.startActivity(intent)
+                    it.onError(Error(errorMsg+"(100)"))
                 }
                 1->{
                     if (null==data){
@@ -82,12 +86,12 @@ object ApiController{
             when(status){
                 //登录失败
                 100->{
-//                    SPUtil.getInstance()?.clearUserInfo()
-//                    EventBus.getDefault().post(EventBusBean(CodeUtil.LOGOUT_SUCCESS))
-//                    val intent = Intent(MyApp.context, LoginActivity::class.java)
-//                    intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK
-//                    MyApp.context?.startActivity(intent)
-//                    it.onError(Error(errorMessage+"(603)"))
+                    SPUtil.getInstance()?.clearUserInfo()
+                    EventBus.getDefault().post(EventBusBean(CodeUtil.LOGOUT_SUCCESS))
+                    val intent = Intent(MyApp.context, LoginActivity::class.java)
+                    intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK
+                    MyApp.context?.startActivity(intent)
+                    it.onError(Error(errorMsg+"(100)"))
                 }
                 1->{
                     it.onNext(data)

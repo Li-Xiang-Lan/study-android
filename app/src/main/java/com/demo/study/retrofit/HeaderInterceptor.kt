@@ -1,6 +1,6 @@
 package com.demo.study.retrofit
 
-import android.os.Build
+import com.demo.study.util.SPUtil
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -30,10 +30,10 @@ class HeaderInterceptor : Interceptor {
             return chain.proceed(builder.url(newFullUrl).build())
         }
 
-//        val userInfo = SPUtil.getInstance()?.getUserId()
+        val userInfo = SPUtil.getInstance()?.getUserInfo()
         return chain.proceed(chain.request().newBuilder()
-                .header("session", "")
-                .header("userId", "")
+                .header("session", if (null==userInfo) "" else userInfo?.seesion)
+                .header("userId", if (null==userInfo) "" else userInfo?.id.toString())
                 .build())
     }
 }

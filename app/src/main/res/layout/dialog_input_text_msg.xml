@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/rl_inputdlg_view"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="@color/colorfff">
+        <EditText
+                android:id="@+id/et_input_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:hint="想说点什么"
+                android:imeOptions="flagNoExtractUi"
+                android:lineSpacingMultiplier="1.2"
+                android:maxLength="120"
+                android:maxLines="6"
+                android:textSize="14dp"
+                android:minHeight="104dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:scrollbars="vertical"
+                android:background="@null"
+                tools:ignore="InvalidImeActionId"
+                android:textColor="@color/color333"
+                android:textColorHint="@color/color999"
+                />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical|right">
+
+            <TextView
+                    android:id="@+id/tv_test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/120"
+                    android:textColor="@color/color333" />
+            <TextView
+                    android:id="@+id/confrim_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="28dp"
+                    android:gravity="center"
+                    android:text="发送"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colore75"
+                    android:background="@drawable/bg_fce_6dp_solid"/>
+        </LinearLayout>
+
+
+</LinearLayout>
+
